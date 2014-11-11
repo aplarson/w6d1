@@ -1,6 +1,10 @@
-var Asteroids = window.Asteroids || {};
+(function () {
 
-Asteroids.Bullet = function (pos, game, vel) {
+if (typeof Asteroids === "undefined") {
+  window.Asteroids = {};
+}
+
+var Bullet = Asteroids.Bullet = function (pos, game, vel) {
   Asteroids.MovingObject.call(this, { pos: pos,
                                       vel: vel,
                                       radius: Asteroids.Bullet.RADIUS,
@@ -9,6 +13,7 @@ Asteroids.Bullet = function (pos, game, vel) {
   this.isWrappable = false;
 };
 
-Asteroids.Util.inherits(Asteroids.Bullet, Asteroids.MovingObject);
+Asteroids.Util.inherits(Bullet, Asteroids.MovingObject);
 
-Asteroids.Bullet.RADIUS = 10;
+Bullet.RADIUS = 10;
+})();
