@@ -33,7 +33,8 @@ Asteroids.Ship.prototype.draw = function (ctx) {
 };
 
 Asteroids.Ship.prototype.fireBullet = function() {
-  var bulletVel = [this.vel[0] + 15, this.vel[1] + 15]
+  var direction = Asteroids.Util.unitVector(this.vel)
+  var bulletVel = [this.vel[0] + (direction[0] * 15), this.vel[1] + (direction[1] * 15)];
   var bullet = new Asteroids.Bullet(this.pos, this.game, bulletVel);
   this.game.bullets.push(bullet);
 }

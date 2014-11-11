@@ -11,4 +11,4 @@ Asteroids.Bullet = function (pos, game, vel) {
 
 Asteroids.Util.inherits(Asteroids.Bullet, Asteroids.MovingObject);
 
-Asteroids.Bullet.RADIUS = 2;
+Asteroids.Bullet.RADIUS = 10;
