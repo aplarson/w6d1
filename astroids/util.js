@@ -9,8 +9,9 @@ Asteroids.Util.inherits = function (subClass, superClass) {
 };
 
 Asteroids.Util.randomVec = function (length) {
-  return [Asteroids.Util.randomGen(length, .5),
-          Asteroids.Util.randomGen(length, .5)];
+  var dir = Asteroids.Util.unitVector([Asteroids.Util.randomGen(length, .5),
+            Asteroids.Util.randomGen(length, .5)]);
+  return [dir[0] * length, dir[1] * length]
 };
 
 Asteroids.Util.randomGen = function (max, scale) {
@@ -27,8 +28,9 @@ Asteroids.Util.distanceBetween = function (pos1, pos2) {
 }
 
 Asteroids.Util.unitVector = function (vector) {
-  var yDir = vector[0] / Math.abs(vector[0])
-  var xDir = vector[1] / Math.abs(vector[1])
+  // Direction defaults to 0 if absolute value is undefined
+  var yDir = vector[0] / Math.abs(vector[0]) || 0
+  var xDir = vector[1] / Math.abs(vector[1]) || 0
   var squaredLength = (vector[0] * vector[0]) + (vector[1] * vector[1]);
   return [ yDir * ((vector[0] * vector[0]) / squaredLength), xDir * ((vector[1] * vector[1]) / squaredLength)];
 }
